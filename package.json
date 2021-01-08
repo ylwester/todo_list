@@ -1,0 +1,29 @@
+{
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "name": "todo_list",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch",
+    "server": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ylwester/todo_list.git"
+  },
+  "author": "Sylwester Miecznikowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ylwester/todo_list/issues"
+  },
+  "homepage": "https://github.com/ylwester/todo_list#readme"
+}
