@@ -15,7 +15,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Archivo', sans-serif;
     font-weight: 500;
-    padding: 10px;
 }
 
 #page-container {
@@ -26,6 +25,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     width: 25vh;
     background-color: #203647;
+}
+
+#projects-container h1, h2 {
+    padding: 10px;
 }
 
 #projects-header {
@@ -42,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
-    background-color: white;
+    background-color: #203647;
     width: 500px;
     max-width: 80%;
 }
@@ -52,11 +55,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-header {
-    padding: 10px 15px;
+    margin: 0;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
+}
+
+.modal-close-button {
+    border: none;
+    background: transparent;
+    color: #EEFBFB;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+
+}
+
+#modal-header-text h3 {
+    padding: 0;
 }
 
 .modal-header .title {
@@ -73,8 +91,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
-.modal-body {
-    padding: 10px 15px;
+#modal-body {
+    padding: 10px;
 }
 
 #overlay {
@@ -93,4 +111,3 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: all;
     opacity: 1;
 }
-

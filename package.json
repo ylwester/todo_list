@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/ylwester/todo_list/issues"
   },
-  "homepage": "https://github.com/ylwester/todo_list#readme"
+  "homepage": "https://github.com/ylwester/todo_list#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1"
+  }
 }
