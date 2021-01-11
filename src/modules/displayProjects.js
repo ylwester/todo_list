@@ -1,31 +1,30 @@
 import {storageData} from "../libs/storageData";
 
+
+
 function displayProjects() {
+    const projectsNamesWrap= document.getElementById('projects-names-wrap');
     const projectsArray = storageData().getProjectsArray();
 
-    const navContainer = document.createElement('div');
-    navContainer.setAttribute('id', 'projects-container');
-
-    const projectHeader = document.createElement('div');
-    projectHeader.setAttribute('id', 'projects-header')
-    const headerText = document.createElement('h1');
-    headerText.textContent = "Projects";
-
-    projectHeader.appendChild(headerText);
-    navContainer.appendChild(projectHeader);
-
+    clearProjectsList()
     projectsArray.forEach((value) => {
         const projNameContainer = document.createElement('div');
         projNameContainer.classList.add('project-name');
         const projName= document.createElement('h2');
         projName.textContent = value.name;
         projNameContainer.appendChild(projName);
-        navContainer.appendChild(projNameContainer);
+        projectsNamesWrap.appendChild(projNameContainer);
     })
 
-    return navContainer;
-
 }
+
+function clearProjectsList() {
+    const projectsNamesWrap = document.getElementById('projects-names-wrap');
+    while(projectsNamesWrap.hasChildNodes()) {
+        projectsNamesWrap.removeChild(projectsNamesWrap.firstChild);
+    }
+}
+
 
 
 export {

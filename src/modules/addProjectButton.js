@@ -1,5 +1,7 @@
 import {ProjectsFactory} from "./ProjectsFactory";
 import {modal} from "./modal";
+import {storageData} from "../libs/storageData";
+import {displayProjects} from "./displayProjects";
 
 function addProjectButton() {
     const container = document.getElementById('projects-header');
@@ -22,7 +24,9 @@ function addProjectButton() {
 
     const projectNameInput = document.createElement('input');
     projectNameInput.setAttribute('type', 'text');
+    projectNameInput.setAttribute('maxlength', '32');
     projectNameInput.setAttribute('id', 'project-name-input');
+    projectNameInput.classList.add('modal-form-input');
     modalBody.appendChild(projectNameInput);
     modalBody.appendChild(document.createElement("br"));
 
@@ -31,8 +35,10 @@ function addProjectButton() {
     modalBody.appendChild(projectDescriptionLabel);
     modalBody.appendChild(document.createElement("br"));
 
-    const projectDescriptionInput = document.createElement('input');
+    const projectDescriptionInput = document.createElement('textarea');
     projectDescriptionInput.setAttribute('type', 'text');
+    projectDescriptionInput.classList.add('modal-form-input');
+    projectDescriptionInput.setAttribute('maxlength', '100');
     projectDescriptionInput.setAttribute('id', 'project-description-input');
     modalBody.appendChild(projectDescriptionInput);
     modalBody.appendChild(document.createElement("br"));
@@ -44,11 +50,17 @@ function addProjectButton() {
 
     const selectButtonConfirm = document.getElementById('project-form-confirm');
     selectButtonConfirm.addEventListener('click', () => {
-        const modalek = selectButtonConfirm.closest('.modal');
-        modal().closeModal(modalek);
+        const closestModal = selectButtonConfirm.closest('.modal');
 
+        const name = document.getElementById('project-name-input').value;
+        const desc = document.getElementById('project-description-input').value;
+
+
+        storageData().saveProject("kupa", "dupa");
+        displayProjects();
+;
+        modal().closeModal(closestModal);
     })
-
 
 
 }
