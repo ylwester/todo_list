@@ -1,22 +1,12 @@
-function storageData () {
-    let projectsData = [
-        {
-            name: "First Project",
-            description: "Creating to do app",
-        },
-        {
-            name: "Todo List",
-            description: "Things to be done",
-        },
-    ]
+function storageData() {
 
-    localStorage.setItem("projectsData", JSON.stringify(projectsData));
-
-    const saveProject = (name, description) => {
-        projectsData.push({name: name, description: description});
-        localStorage.setItem("projectsData", JSON.stringify(projectsData));
+    const sendToLocalStorage = (data) => {
+        localStorage.setItem("projectsData", JSON.stringify(data));
         console.log(localStorage.getItem('projectsData'));
     }
+
+
+    // sendToLocalStorage(projectsData);
 
     const getProjectsArray = () => {
         let projects = localStorage.getItem("projectsData");
@@ -25,11 +15,9 @@ function storageData () {
     }
 
     return {
-        projectsData,
-        saveProject,
+        sendToLocalStorage,
         getProjectsArray,
     }
-
 }
 
 export {

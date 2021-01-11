@@ -1,5 +1,3 @@
-import {storageData} from "../libs/storageData";
-
 function projectsContainer() {
     const container = document.getElementById('page-container');
 
@@ -21,6 +19,7 @@ function projectsContainer() {
     navContainer.appendChild(projectHeader);
     navContainer.appendChild(DOMProjectsNamesWrap);
     container.appendChild(navContainer);
+
 }
 
 export {

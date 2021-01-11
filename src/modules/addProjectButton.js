@@ -55,8 +55,12 @@ function addProjectButton() {
         const name = document.getElementById('project-name-input').value;
         const desc = document.getElementById('project-description-input').value;
 
+        let newArrayOfProjects = storageData().getProjectsArray();
 
-        storageData().saveProject("kupa", "dupa");
+        newArrayOfProjects.push({name: name, description: desc});
+
+        storageData().sendToLocalStorage(newArrayOfProjects);
+
         displayProjects();
 ;
         modal().closeModal(closestModal);
