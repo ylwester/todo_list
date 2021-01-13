@@ -6,7 +6,6 @@ function storageData() {
     }
 
 
-    // sendToLocalStorage(projectsData);
 
     const getProjectsArray = () => {
         let projects = localStorage.getItem("projectsData");

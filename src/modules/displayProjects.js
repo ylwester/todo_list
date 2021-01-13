@@ -6,6 +6,7 @@ function displayProjects() {
     const projectsArray = storageData().getProjectsArray();
 
     clearProjectsList();
+
     projectsArray.forEach((value) => {
         const uniqueData = value.name.split(' ').join('-').toLowerCase();
         const projNameContainer = document.createElement('div');

@@ -1,7 +1,8 @@
-const ProjectsFactory = (title, description) => {
+const ProjectsFactory = (name, description, todoArray) => {
     return {
-        title,
+        name,
         description,
+        todoArray,
     }
 }
 

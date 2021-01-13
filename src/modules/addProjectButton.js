@@ -57,12 +57,16 @@ function addProjectButton() {
 
         let newArrayOfProjects = storageData().getProjectsArray();
 
-        newArrayOfProjects.push({name: name, description: desc});
+        newArrayOfProjects.push(ProjectsFactory(name,desc, []));
 
+        // newArrayOfProjects.push({name: name, description: desc});
+        //
         storageData().sendToLocalStorage(newArrayOfProjects);
+        //
+        // storageData().sendToLocalStorage(ProjectsFactory(name,desc, []));
+
 
         displayProjects();
-;
         modal().closeModal(closestModal);
     })
 
