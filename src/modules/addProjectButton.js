@@ -2,6 +2,7 @@ import {ProjectsFactory} from "./ProjectsFactory";
 import {modal} from "./modal";
 import {storageData} from "../libs/storageData";
 import {displayProjects} from "./displayProjects";
+import {displayToDoContent} from "./displayToDoContent";
 
 function addProjectButton() {
     const container = document.getElementById('projects-header');
@@ -26,8 +27,9 @@ function addProjectButton() {
         newArrayOfProjects.push(ProjectsFactory(name,desc, []));
         storageData().sendToLocalStorage(newArrayOfProjects);
 
-        displayProjects();
         modal().closeModal(closestModal);
+        displayProjects();
+        displayToDoContent();
     })
 
 

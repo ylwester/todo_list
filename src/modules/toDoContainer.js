@@ -3,12 +3,15 @@ function toDoContainer () {
 
     const tasksPageContainer = document.createElement('div');
     tasksPageContainer.setAttribute('id', 'tasks-content');
-    const tasksPageTitle = document.createElement('div');
+    const tasksPageHeader = document.createElement('div');
     const titleText = document.createElement('h1');
-    tasksPageTitle.appendChild(titleText);
-    tasksPageContainer.appendChild(tasksPageTitle);
+    titleText.setAttribute('id', 'project-header-todo')
+    tasksPageHeader.appendChild(titleText);
 
-
+    const projectDescriptionHeader = document.createElement('h5');
+    projectDescriptionHeader.setAttribute('id', 'project-description-header');
+    tasksPageContainer.appendChild(tasksPageHeader);
+    tasksPageContainer.appendChild(projectDescriptionHeader);
     container.appendChild(tasksPageContainer);
 }
 
