@@ -4,17 +4,19 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-weight: 100;
     width: 140vh;
     margin: auto;
     background-color: #12232E;
     color: #EEFBFB;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 500;
+h1, h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    /*font-family: 'Archivo', sans-serif;*/
 }
 
 #page-container {
@@ -23,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #projects-container {
     height: 100vh;
-    width: 25vh;
+    width: 22%;
     background-color: #203647;
 }
 
@@ -40,7 +42,35 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #404E67;
 }
 
+#tasks-content {
+    width: 78%;
+    padding: 10px;
+    margin-left: 20px;
 
+}
+
+#empty-project-message {
+    font-size: 30px;
+    text-align: center;
+}
+
+#todo-container {
+    margin: 30px 0 0 0;
+
+}
+
+#header-tasks-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task {
+    width: 100vh;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: darkslategrey;
+    margin-bottom: 10px;
+}
 
 
 .modal {

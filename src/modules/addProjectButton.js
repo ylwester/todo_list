@@ -1,8 +1,8 @@
 import {ProjectsFactory} from "./ProjectsFactory";
-import {modal} from "./modal";
 import {storageData} from "../libs/storageData";
 import {displayProjects} from "./displayProjects";
 import {displayToDoContent} from "./displayToDoContent";
+import {addProjectModal, modal} from "./modal";
 
 function addProjectButton() {
     const container = document.getElementById('projects-header');
@@ -13,8 +13,7 @@ function addProjectButton() {
     container.appendChild(addButton);
 
     //Creating modal with adding project form
-    modal().addProjectModal();
-
+    addProjectModal();
 
     const selectButtonConfirm = document.getElementById('project-form-confirm');
     selectButtonConfirm.addEventListener('click', () => {
@@ -24,7 +23,10 @@ function addProjectButton() {
         const desc = document.getElementById('project-description-input').value;
 
         let newArrayOfProjects = storageData().getProjectsArray();
-        newArrayOfProjects.push(ProjectsFactory(name,desc, []));
+        let todos = [];
+
+
+        newArrayOfProjects.push(ProjectsFactory(name,desc, todos));
         storageData().sendToLocalStorage(newArrayOfProjects);
 
         modal().closeModal(closestModal);
