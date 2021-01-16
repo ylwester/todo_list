@@ -1,4 +1,4 @@
-import {addTaskModal} from "./modal";
+import {addTaskModal} from "./modalHandler";
 
 function addTaskButton() {
     addTaskModal();

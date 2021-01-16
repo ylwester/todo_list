@@ -1,14 +1,43 @@
-function modal() {
-    const openModalButtons = document.querySelectorAll('[data-modal-target]');
+function createModal() {
+    //Creating a modal, popup box
+    const pageContainer = document.getElementById('page-container');
+    const modalContainer = document.createElement('div');
+    modalContainer.classList.add('modal');
+    modalContainer.setAttribute('id', 'modal');
 
-    // Searches for buttons with data "data-modal-target" and opens modal.
-    openModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = document.querySelector(button.dataset.modalTarget);
-            openModal(modal);
-        });
-    })
+    //Content in modal header
+    const modalHeader = document.createElement('div');
+    modalHeader.classList.add('modal-header');
+    const modalHeaderText = document.createElement('h3');
+    modalHeaderText.setAttribute('id', 'modal-header-text');
+    modalHeader.appendChild(modalHeaderText);
 
+    //Close button
+    const modalHeaderButton = document.createElement('button');
+    modalHeaderButton.setAttribute('data-close-button', '');
+    modalHeaderButton.classList.add('modal-close-button');
+    const xSignButton = document.createElement('i');
+    xSignButton.classList.add("fas");
+    xSignButton.classList.add("fa-times");
+    modalHeaderButton.appendChild(xSignButton);
+    modalHeader.appendChild(modalHeaderButton);
+
+    modalContainer.appendChild(modalHeader);
+
+    //Content in modal body
+    const modalContent = document.createElement('div');
+    modalContent.setAttribute('id', 'modal-body')
+    modalContainer.appendChild(modalContent)
+
+    //Creating div with background shadow while open modal
+    const overlay = document.createElement('div');
+    overlay.setAttribute('id', 'overlay');
+
+    pageContainer.appendChild(modalContainer);
+    pageContainer.appendChild(overlay);
+}
+
+function modalHandler() {
     const overlay = document.getElementById('overlay');
     overlay.addEventListener('click', () => {
         const modals = document.querySelectorAll('.modal.active');
@@ -38,8 +67,9 @@ function modal() {
 
 }
 
-function openModal(modal) {
+function openModal() {
     const overlay = document.getElementById('overlay');
+    const modal = document.getElementById('modal')
     if(modal == null) return;
     modal.classList.add('active');
     overlay.classList.add('active');
@@ -56,13 +86,20 @@ function clearModalContent() {
 
 function addProjectModal() {
     clearModalContent();
-    openModal()
-    const modalHeader = document.createElement('div');
-    modalHeader.classList.add('modal-header');
-    const modalHeaderText = document.createElement('h3');
-    modalHeaderText.setAttribute('id', 'modal-header-text');
+    openModal();
+
+    const modalHeaderText = document.getElementById('modal-header-text');
     modalHeaderText.textContent = "Add new project";
-    modalHeader.appendChild(modalHeaderText);
+
+    // const modal = document.getElementById('modal');
+    //
+    // const modalHeader = document.createElement('div');
+    // modalHeader.classList.add('modal-header');
+    // const modalHeaderText = document.createElement('h3');
+    // modalHeaderText.setAttribute('id', 'modal-header-text');
+    // modalHeaderText.textContent = "Add new project";
+    // modalHeader.appendChild(modalHeaderText);
+
 
     const modalBody = document.getElementById('modal-body');
     const projectNameLabel = document.createElement("label");
@@ -99,11 +136,17 @@ function addProjectModal() {
 
 function addTaskModal() {
     clearModalContent();
+    openModal();
+
+    const modalHeaderText = document.getElementById('modal-header-text');
+    modalHeaderText.textContent = "Add new task";
 
 }
 
 export {
-    modal,
+    createModal,
+    openModal,
+    modalHandler,
     addProjectModal,
     addTaskModal,
 }

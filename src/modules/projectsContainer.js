@@ -11,11 +11,16 @@ function projectsContainer() {
     const headerText = document.createElement('h1');
     headerText.textContent = "Projects";
 
+    const addButton = document.createElement('button');
+    addButton.setAttribute('id', 'add-project-button')
+    addButton.textContent = "Add project";
+
     const DOMProjectsNamesWrap = document.createElement('div');
     DOMProjectsNamesWrap.setAttribute('id', "projects-names-wrap");
     navContainer.appendChild(DOMProjectsNamesWrap);
 
     projectHeader.appendChild(headerText);
+    projectHeader.appendChild(addButton);
     navContainer.appendChild(projectHeader);
     navContainer.appendChild(DOMProjectsNamesWrap);
     container.appendChild(navContainer);
