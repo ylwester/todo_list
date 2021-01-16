@@ -3,12 +3,16 @@ import {addProjectButton} from "./addProjectButton";
 import {projectsContainer} from "./projectsContainer";
 import {displayToDoContent} from "./displayToDoContent";
 import {storageData} from "../libs/storageData";
-import {ProjectsFactory} from "./ProjectsFactory";
+import {activeProject, ProjectsFactory} from "./ProjectsFactory";
 import {TaskFactory} from "./TaskFactory";
 import {toDoContainer} from "./toDoContainer";
 import {createModal, modalHandler} from "./modalHandler";
+import {addTaskButton} from "./addTaskButton";
+
+const currentProject = activeProject();
 
 function pageLoad () {
+
     if(storageData().getProjectsArray() === null){
         let projectsData = [];
         let tasksToProject = [];
@@ -28,7 +32,7 @@ function pageLoad () {
     displayProjects();
     //To Do content
     displayToDoContent();
-
+    addTaskButton();
     modalHandler();
 }
 

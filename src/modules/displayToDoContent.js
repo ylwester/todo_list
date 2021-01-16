@@ -1,5 +1,6 @@
-
 import {storageData} from "../libs/storageData";
+import {activeProject, currentProject} from "./ProjectsFactory";
+
 
 function displayToDoContent() {
     //Get header div
@@ -22,6 +23,7 @@ function displayToDoContent() {
             const nameParse = item.id.split('-').join(' ').toLowerCase();
             const selectedProject = projectsArray.find(project => project.name.toLowerCase() === nameParse);
             header.textContent = selectedProject.name;
+            currentProject.setProject(selectedProject);
             headerDescription.textContent = selectedProject.description;
             console.log(selectedProject.tasksArray);
             if(selectedProject.tasksArray.length === 0) {

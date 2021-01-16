@@ -14,13 +14,9 @@ function toDoContainer () {
 
     //Create add task button
     const addTask = document.createElement('button');
+    addTask.setAttribute('id', 'add-task-button')
     addTask.textContent = "Add task";
-    addTask.setAttribute('data-modal-target', '#modal');
     tasksPageHeader.appendChild(addTask);
-
-    addTask.addEventListener('click', () => {
-        addTaskButton();
-    })
 
     const projectDescriptionHeader = document.createElement('h5');
     projectDescriptionHeader.setAttribute('id', 'project-description-header');
