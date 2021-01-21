@@ -11,19 +11,58 @@ import {addTaskButton} from "./addTaskButton";
 
 const currentProject = activeProject();
 
+
+// if(storageData().getProjectsArray() === null){
+    let projectsData = [];
+    let tasksToProject = [];
+
+    tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
+    tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
+
+    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+
+    storageData().sendToLocalStorage(projectsData);
+// }
+
+    let projects = storageData().getProjectsArray();
+
+    let projectsRestored = projects.map(project => {
+        let tasksArr = project.tasksArray.map(task => {
+            let tasks = TaskFactory(task.title, task.description, task.dueDate, task.priority, task.completed);
+            return tasks;
+        })
+        let proj = ProjectsFactory(project.name, project.description, tasksArr);
+        return proj;
+    })
+
+
+
 function pageLoad () {
 
-    if(storageData().getProjectsArray() === null){
-        let projectsData = [];
-        let tasksToProject = [];
-
-        tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
-        tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
-
-        projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-
-        storageData().sendToLocalStorage(projectsData);
-    }
+    // // if(storageData().getProjectsArray() === null){
+    //     let projectsData = [];
+    //     let tasksToProject = [];
+    //
+    //     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
+    //     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
+    //
+    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    //
+    //     storageData().sendToLocalStorage(projectsData);
+    // // }
+    //
+    // let projects = storageData().getProjectsArray();
+    //
+    // let projectsRestored = projects.map(project => {
+    //     let proj = ProjectsFactory(project.name, project.description, project.tasksArray);
+    //     return proj;
+    // })
+    //
+    console.log(projectsRestored);
 
     createModal();
     projectsContainer();
