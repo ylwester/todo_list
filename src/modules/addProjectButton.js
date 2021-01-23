@@ -3,6 +3,7 @@ import {storageData} from "../libs/storageData";
 import {displayProjects} from "./displayProjects";
 import {displayToDoContent} from "./displayToDoContent";
 import {addProjectModal, modalHandler} from "./modalHandler";
+import {projectsRestored} from "./pageload";
 
 function addProjectButton() {
     const addButton = document.getElementById('add-project-button');
@@ -17,7 +18,7 @@ function addProjectButton() {
             const name = document.getElementById('project-name-input').value;
             const desc = document.getElementById('project-description-input').value;
 
-            let newArrayOfProjects = storageData().getProjectsArray();
+            let newArrayOfProjects = projectsRestored;
             let todos = [];
 
 

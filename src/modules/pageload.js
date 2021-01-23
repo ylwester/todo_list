@@ -19,9 +19,9 @@ const currentProject = activeProject();
     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
 
-    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-    projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
+    projectsData.push(ProjectsFactory("Default1","Enter your tasks here", tasksToProject));
+    projectsData.push(ProjectsFactory("Default2","Enter your tasks here", tasksToProject));
+    projectsData.push(ProjectsFactory("Default3","Enter your tasks here", tasksToProject));
 
     storageData().sendToLocalStorage(projectsData);
 // }
@@ -40,28 +40,6 @@ const currentProject = activeProject();
 
 
 function pageLoad () {
-
-    // // if(storageData().getProjectsArray() === null){
-    //     let projectsData = [];
-    //     let tasksToProject = [];
-    //
-    //     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
-    //     tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days",));
-    //
-    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-    //     projectsData.push(ProjectsFactory("Default","Enter your tasks here", tasksToProject));
-    //
-    //     storageData().sendToLocalStorage(projectsData);
-    // // }
-    //
-    // let projects = storageData().getProjectsArray();
-    //
-    // let projectsRestored = projects.map(project => {
-    //     let proj = ProjectsFactory(project.name, project.description, project.tasksArray);
-    //     return proj;
-    // })
-    //
     console.log(projectsRestored);
 
     createModal();
@@ -77,4 +55,5 @@ function pageLoad () {
 
 export {
     pageLoad,
+    projectsRestored,
 }
