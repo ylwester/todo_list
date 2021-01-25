@@ -1,5 +1,5 @@
-import {storageData} from "../libs/storageData";
-import {activeProject, currentProject} from "./ProjectsFactory";
+import {currentProject} from "./ProjectsFactory";
+import {projectsRestored} from "./pageload";
 
 
 function displayToDoContent() {
@@ -11,7 +11,7 @@ function displayToDoContent() {
     const headerDescription = document.getElementById('project-description-header');
 
     const selectAllProjects = document.querySelectorAll('.project-name');
-    const projectsArray = storageData().getProjectsArray();
+    const projectsArray = projectsRestored;
 
     const tasksSection = document.getElementById('todo-container');
 
@@ -22,11 +22,11 @@ function displayToDoContent() {
         item.addEventListener('click', () => {
             const nameParse = item.id.split('-').join(' ').toLowerCase();
             const selectedProject = projectsArray.find(project => project.name.toLowerCase() === nameParse);
-            header.textContent = selectedProject.name;
+            header.textContent = selectedProject.getName();
             currentProject.setProject(selectedProject);
-            headerDescription.textContent = selectedProject.description;
+            headerDescription.textContent = selectedProject.getDescription();
             console.log(selectedProject.tasksArray);
-            if(selectedProject.tasksArray.length === 0) {
+            if(selectedProject.getTasksArray().length === 0) {
                 clearToDoSection();
                 const emptyProjectMessage = document.createElement('h3');
                 emptyProjectMessage.setAttribute('id', 'empty-project-message');
@@ -43,11 +43,11 @@ function displayToDoContent() {
 
 function generateTasks(selectedProject) {
     const tasksSection = document.getElementById('todo-container');
-    const tasksArray = selectedProject.tasksArray;
+    const tasksArray = selectedProject.getTasksArray();
     tasksArray.forEach((task) => {
         const todo = document.createElement('div');
         todo.classList.add('task');
-        todo.textContent = task.title;
+        todo.textContent = task.getTitle();
         tasksSection.appendChild(todo);
     })
 
@@ -56,13 +56,24 @@ function generateTasks(selectedProject) {
 
 function displayFirstDefaultProject() {
     const header = document.getElementById('project-header-todo');
-    const projectsArray = storageData().getProjectsArray();
-    const activeProject = projectsArray[0];
-    const tasksArray = activeProject.tasksArray;
+    const activeProject = projectsRestored[0];
+    const tasksArray = activeProject.getTasksArray();
 
-    header.textContent = activeProject.name;
+    header.textContent = activeProject.getName();
     const headerDescription = document.getElementById('project-description-header');
-    headerDescription.textContent = activeProject.description;
+    headerDescription.textContent = activeProject.getDescription();
+
+    const tasksSection = document.getElementById('todo-container');
+    if(tasksArray.length === 0) {
+        clearToDoSection();
+        const emptyProjectMessage = document.createElement('h3');
+        emptyProjectMessage.setAttribute('id', 'empty-project-message');
+        emptyProjectMessage.textContent = "Add new tasks to your project!"
+        tasksSection.appendChild(emptyProjectMessage);
+    } else {
+        clearToDoSection();
+        generateTasks(activeProject);
+    }
 
 }
 
