@@ -1,5 +1,5 @@
 function activeProject() {
-    let _project = '';
+    let _project = [];
 
     function setProject(project) {
         _project = project;
@@ -42,6 +42,10 @@ const ProjectsFactory = (name, description, tasksArray = {}) => {
         return tasksArray;
     }
 
+    const setTasksArray = (newTasksArray) => {
+        tasksArray = newTasksArray;
+    }
+
     return {
         name,
         description,
@@ -50,13 +54,10 @@ const ProjectsFactory = (name, description, tasksArray = {}) => {
         getDescription,
         setDescription,
         getTasksArray,
+        setTasksArray,
         addTask,
         setName,
     }
-}
-
-class Projects {
-
 }
 
 export {

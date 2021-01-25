@@ -1,6 +1,9 @@
-import {addTaskModal} from "./modalHandler";
+import {addTaskModal, modalHandler} from "./modalHandler";
 import {storageData} from "../libs/storageData";
 import {currentProject} from "./ProjectsFactory";
+import {clearToDoSection, generateTasks} from "./displayToDoContent";
+import {projectsRestored} from "./pageload";
+import {TaskFactory} from "./TaskFactory";
 
 
 function addTaskButton() {
@@ -12,16 +15,26 @@ function addTaskButton() {
         const selectButton = document.getElementById('task-confirm-button');
         selectButton.addEventListener('click', ()=> {
             const closestModal = selectButton.closest('.modal');
+            const activeTasks = currentProject.getProject().getTasksArray();
+            const activeIndex = projectsRestored.indexOf(currentProject.getProject());
 
-            const active = currentProject.getProject();
 
             const title = document.getElementById('task-title-input').value;
             const desc = document.getElementById('task-desc-input').value;
             const dueDate = document.getElementById('task-due-date-input').value;
             const priority = document.getElementById('task-priority-select');
 
-            let projectsArray = storageData().getProjectsArray();
-            console.log(active);
+
+            activeTasks.push(TaskFactory(title,desc,dueDate,priority, false));
+
+            projectsRestored[activeIndex].setTasksArray(activeTasks);
+
+            storageData().sendToLocalStorage(projectsRestored);
+
+            clearToDoSection();
+            generateTasks(projectsRestored[activeIndex]);
+
+            modalHandler().closeModal(closestModal);
         })
     })
 }

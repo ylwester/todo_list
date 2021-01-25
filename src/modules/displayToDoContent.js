@@ -56,7 +56,8 @@ function generateTasks(selectedProject) {
 
 function displayFirstDefaultProject() {
     const header = document.getElementById('project-header-todo');
-    const activeProject = projectsRestored[0];
+    currentProject.setProject(projectsRestored[0]);
+    const activeProject = currentProject.getProject(projectsRestored[0]);
     const tasksArray = activeProject.getTasksArray();
 
     header.textContent = activeProject.getName();
@@ -69,6 +70,7 @@ function displayFirstDefaultProject() {
         const emptyProjectMessage = document.createElement('h3');
         emptyProjectMessage.setAttribute('id', 'empty-project-message');
         emptyProjectMessage.textContent = "Add new tasks to your project!"
+        currentProject.setProject(activeProject);
         tasksSection.appendChild(emptyProjectMessage);
     } else {
         clearToDoSection();
@@ -86,4 +88,6 @@ function clearToDoSection() {
 
 export {
     displayToDoContent,
+    generateTasks,
+    clearToDoSection,
 }

@@ -5,8 +5,6 @@ function storageData() {
         console.log(localStorage.getItem('projectsData'));
     }
 
-
-
     const getProjectsArray = () => {
         let projects = localStorage.getItem("projectsData");
         projects = JSON.parse(projects);
