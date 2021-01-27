@@ -1,7 +1,7 @@
 import {addTaskModal, modalHandler} from "./modalHandler";
 import {storageData} from "../libs/storageData";
 import {currentProject} from "./ProjectsFactory";
-import {clearToDoSection, generateTasks} from "./displayToDoContent";
+import {clearToDoSection, generateTasksList} from "./displayToDoContent";
 import {projectsRestored} from "./pageload";
 import {TaskFactory} from "./TaskFactory";
 
@@ -32,7 +32,7 @@ function addTaskButton() {
             storageData().sendToLocalStorage(projectsRestored);
 
             clearToDoSection();
-            generateTasks(projectsRestored[activeIndex]);
+            generateTasksList(projectsRestored[activeIndex]);
 
             modalHandler().closeModal(closestModal);
         })

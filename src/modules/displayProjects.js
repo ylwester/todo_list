@@ -1,4 +1,3 @@
-import {storageData} from "../libs/storageData";
 import {projectsRestored} from "./pageload";
 
 function displayProjects() {
@@ -9,7 +8,6 @@ function displayProjects() {
     clearProjectsList();
 
     projectsArray.forEach((value) => {
-        console.log(value.getName());
         const uniqueData = value.getName().split(' ').join('-').toLowerCase();
         const projNameContainer = document.createElement('div');
         projNameContainer.classList.add('project-name');

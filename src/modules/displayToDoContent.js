@@ -34,24 +34,71 @@ function displayToDoContent() {
                 tasksSection.appendChild(emptyProjectMessage);
             } else {
                 clearToDoSection();
-                generateTasks(selectedProject);
+                generateTasksList(selectedProject);
                 console.log("Something is there");
             }
         })
     })
 }
 
-function generateTasks(selectedProject) {
-    const tasksSection = document.getElementById('todo-container');
+function expandTask() {
+    const allTasks = document.querySelectorAll('.task-item');
+
+    allTasks.forEach((task) => {
+        task.addEventListener("click", () => {
+                if(!task.classList.contains('active')){
+                    task.classList.add('active');
+                } else {
+                    task.classList.remove('active')
+                }
+            })
+    })
+}
+
+function generateTasksList(selectedProject) {
     const tasksArray = selectedProject.getTasksArray();
     tasksArray.forEach((task) => {
-        const todo = document.createElement('div');
-        todo.classList.add('task');
-        todo.textContent = task.getTitle();
-        tasksSection.appendChild(todo);
+        createTask(task);
     })
+    expandTask();
+}
 
 
+function createTask(task) {
+    const taskSection = document.getElementById('todo-container');
+
+    const taskItem = document.createElement('div');
+    taskItem.classList.add('task-item');
+
+
+    const taskShort = document.createElement('div');
+    taskShort.classList.add('task-short');
+    const taskTitle = document.createElement('p');
+    taskTitle.textContent = task.getTitle();
+
+    taskShort.appendChild(taskTitle);
+
+    const taskExtendedContent = document.createElement('div');
+    taskExtendedContent.classList.add('task-extended-content');
+
+    const titleDiv = document.createElement('div');
+    titleDiv.classList.add('title-extended');
+    const titleExtend = document.createElement('p');
+    titleExtend.textContent = task.getTitle();
+    titleDiv.appendChild(titleExtend);
+
+    const descriptionDiv = document.createElement('div');
+    const descriptionExtend = document.createElement('p');
+    descriptionExtend.textContent = task.getDescription();
+    descriptionDiv.appendChild(descriptionExtend)
+
+    taskExtendedContent.appendChild(titleDiv);
+    taskExtendedContent.appendChild(descriptionDiv)
+
+    taskItem.appendChild(taskShort);
+    taskItem.appendChild(taskExtendedContent)
+
+    taskSection.appendChild(taskItem);
 }
 
 function displayFirstDefaultProject() {
@@ -74,7 +121,7 @@ function displayFirstDefaultProject() {
         tasksSection.appendChild(emptyProjectMessage);
     } else {
         clearToDoSection();
-        generateTasks(activeProject);
+        generateTasksList(activeProject);
     }
 
 }
@@ -88,6 +135,6 @@ function clearToDoSection() {
 
 export {
     displayToDoContent,
-    generateTasks,
+    generateTasksList,
     clearToDoSection,
 }

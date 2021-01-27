@@ -10,19 +10,19 @@ import {createModal, modalHandler} from "./modalHandler";
 import {addTaskButton} from "./addTaskButton";
 
 
-if(storageData().getProjectsArray() === null){
+// if(storageData().getProjectsArray() === null){
     let projectsData = [];
     let tasksToProject = [];
 
-    tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
-    tasksToProject.push(TaskFactory( "Take out the trash", "", "", "2 days", false));
+    tasksToProject.push(TaskFactory( "Take out the trash", "You should take out those trash", "", "2 days", false));
+    tasksToProject.push(TaskFactory( "Take out the trash", "You should take out those trash", "", "2 days", false));
 
     projectsData.push(ProjectsFactory("Default1","Enter your tasks here", tasksToProject));
     projectsData.push(ProjectsFactory("Default2","Enter your tasks here", []));
     projectsData.push(ProjectsFactory("Default3","Enter your tasks here", tasksToProject));
 
     storageData().sendToLocalStorage(projectsData);
-}
+// }
 
     let projects = storageData().getProjectsArray();
 

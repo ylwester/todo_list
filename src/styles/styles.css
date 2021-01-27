@@ -44,7 +44,6 @@ h1, h2 {
 
 #tasks-content {
     width: 78%;
-    padding: 10px;
     margin-left: 20px;
 
 }
@@ -64,13 +63,23 @@ h1, h2 {
     justify-content: space-between;
 }
 
-.task {
+.task-short {
     width: 100%;
     border: 1px solid black;
-    padding: 10px;
+    padding: .5em;
     background-color: darkslategrey;
-    margin-bottom: 10px;
+    cursor: pointer;
 }
+
+.task-extended-content {
+    display: none;
+}
+
+.active .task-extended-content {
+    display: block;
+}
+
+
 
 #project-description-input {
     resize: none;
