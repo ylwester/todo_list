@@ -2,7 +2,6 @@ function storageData() {
 
     const sendToLocalStorage = (data) => {
         localStorage.setItem("projectsData", JSON.stringify(data));
-        console.log(localStorage.getItem('projectsData'));
     }
 
     const getProjectsArray = () => {

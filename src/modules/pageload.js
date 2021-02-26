@@ -11,27 +11,29 @@ import {addTaskButton} from "./addTaskButton";
 
 
 // if(storageData().getProjectsArray() === null){
-    let projectsData = [];
-    let tasksToProject = [];
+let projectsData = [];
+let tasksToProject = [];
 
-    tasksToProject.push(TaskFactory( "Take out the trash", "You should take out those trash", "", "2 days", false));
-    tasksToProject.push(TaskFactory( "Take out the trash", "You should take out those trash", "", "2 days", false));
+tasksToProject.push(TaskFactory.task( "Take out the trash", "You should take out those trash", new Date(), "Low", false));
+tasksToProject.push(TaskFactory.task( "Take out", "You should take out those trash", new Date(), "High", false));
 
-    projectsData.push(ProjectsFactory("Default1","Enter your tasks here", tasksToProject));
-    projectsData.push(ProjectsFactory("Default2","Enter your tasks here", []));
-    projectsData.push(ProjectsFactory("Default3","Enter your tasks here", tasksToProject));
 
-    storageData().sendToLocalStorage(projectsData);
+projectsData.push(ProjectsFactory("Default1","Enter your tasks here", tasksToProject));
+projectsData.push(ProjectsFactory("Default2","Enter your tasks here", []));
+projectsData.push(ProjectsFactory("Default3","Enter your tasks here", tasksToProject));
+
+console.log(projectsData);
+storageData().sendToLocalStorage(projectsData);
 // }
 
-    let projects = storageData().getProjectsArray();
+let projects = storageData().getProjectsArray();
 
-    let projectsRestored = projects.map(project => {
-        let tasksArr = project.tasksArray.map(task => {
-            return TaskFactory(task.title, task.description, task.dueDate, task.priority, task.completed);
-        })
-        return ProjectsFactory(project.name, project.description, tasksArr);
+let projectsRestored = projects.map(project => {
+    let tasksArr = project.tasksArray.map(task => {
+        return TaskFactory.task(task.title, task.description, new Date(task.dueDate), task.priority, task.completed);
     })
+    return ProjectsFactory(project.name, project.description, tasksArr);
+})
 
 console.log(projectsRestored);
 

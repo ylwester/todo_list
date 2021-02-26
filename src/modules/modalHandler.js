@@ -173,7 +173,6 @@ function addTaskModal() {
     modalBody.appendChild(document.createElement("br"));
 
     const taskPriorityLabel = document.createElement('label');
-    taskPriorityLabel.setAttribute('id', 'task-priority-select')
     taskPriorityLabel.textContent = "Priority";
     modalBody.appendChild(taskPriorityLabel);
     modalBody.appendChild(document.createElement("br"));
@@ -183,17 +182,17 @@ function addTaskModal() {
 
     const taskPriorityLow = document.createElement('option');
     taskPriorityLow.textContent = "Low";
-    taskPriorityLow.value = "low";
+    taskPriorityLow.value = "Low";
     taskPrioritySelect.appendChild(taskPriorityLow);
 
     const taskPriorityMedium = document.createElement('option');
     taskPriorityMedium.textContent = "Medium";
-    taskPriorityMedium.value = "medium";
+    taskPriorityMedium.value = "Medium";
     taskPrioritySelect.appendChild(taskPriorityMedium);
 
     const taskPriorityHigh = document.createElement('option');
     taskPriorityHigh.textContent = "High";
-    taskPriorityHigh.value = "high";
+    taskPriorityHigh.value = "High";
     taskPrioritySelect.appendChild(taskPriorityHigh);
 
     modalBody.appendChild(taskPrioritySelect);
@@ -206,10 +205,90 @@ function addTaskModal() {
 
 }
 
+function editTaskModal() {
+    clearModalContent();
+    openModal();
+
+    const modalHeaderText = document.getElementById('modal-header-text');
+    modalHeaderText.textContent = "Edit task";
+
+    const modalBody = document.getElementById('modal-body');
+    const taskTitleLabel = document.createElement('label');
+    taskTitleLabel.setAttribute('for', 'task-title-input');
+    taskTitleLabel.textContent = "Title";
+    modalBody.appendChild(taskTitleLabel);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskTitleInput = document.createElement('input');
+    taskTitleInput.setAttribute('type', 'text');
+    taskTitleInput.setAttribute('id', 'task-title-input');
+    taskTitleInput.setAttribute('maxlength', '32');
+    modalBody.appendChild(taskTitleInput);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskDescLabel = document.createElement('label');
+    taskDescLabel.textContent = "Description";
+    taskDescLabel.setAttribute('for', 'task-desc-input');
+    modalBody.appendChild(taskDescLabel);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskDescInput = document.createElement('textarea');
+    taskDescInput.setAttribute('type', 'text');
+    taskDescInput.setAttribute('maxlength', '100');
+    taskDescInput.setAttribute('id', 'task-desc-input');
+    modalBody.appendChild(taskDescInput);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskDueDateLabel = document.createElement('label');
+    taskDueDateLabel.textContent = "Due date";
+    taskDueDateLabel.setAttribute('for', 'task-due-date-input');
+    modalBody.appendChild(taskDueDateLabel);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskDueDateInput = document.createElement('input');
+    taskDueDateInput.setAttribute('type', 'date');
+    taskDueDateInput.setAttribute('id', 'task-due-date-input');
+    modalBody.appendChild(taskDueDateInput);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskPriorityLabel = document.createElement('label');
+    taskPriorityLabel.textContent = "Priority";
+    modalBody.appendChild(taskPriorityLabel);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskPrioritySelect = document.createElement('select');
+    taskPrioritySelect.setAttribute('id', 'task-priority-select');
+
+    const taskPriorityLow = document.createElement('option');
+    taskPriorityLow.textContent = "Low";
+    taskPriorityLow.value = "Low";
+    taskPrioritySelect.appendChild(taskPriorityLow);
+
+    const taskPriorityMedium = document.createElement('option');
+    taskPriorityMedium.textContent = "Medium";
+    taskPriorityMedium.value = "Medium";
+    taskPrioritySelect.appendChild(taskPriorityMedium);
+
+    const taskPriorityHigh = document.createElement('option');
+    taskPriorityHigh.textContent = "High";
+    taskPriorityHigh.value = "High";
+    taskPrioritySelect.appendChild(taskPriorityHigh);
+
+    modalBody.appendChild(taskPrioritySelect);
+    modalBody.appendChild(document.createElement("br"));
+
+    const taskConfirmButton = document.createElement('button');
+    taskConfirmButton.textContent = "Confirm";
+    taskConfirmButton.setAttribute('id', 'task-confirm-button')
+    modalBody.appendChild(taskConfirmButton);
+
+}
+
 export {
     createModal,
     openModal,
     modalHandler,
     addProjectModal,
     addTaskModal,
+    editTaskModal,
 }

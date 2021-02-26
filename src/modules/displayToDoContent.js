@@ -1,5 +1,6 @@
 import {currentProject} from "./ProjectsFactory";
 import {projectsRestored} from "./pageload";
+import {editTaskButton} from "./editTaskButton";
 
 
 function displayToDoContent() {
@@ -42,14 +43,15 @@ function displayToDoContent() {
 }
 
 function expandTask() {
-    const allTasks = document.querySelectorAll('.task-item');
+    const allTasks = document.querySelectorAll('.task-details');
 
     allTasks.forEach((task) => {
         task.addEventListener("click", () => {
-                if(!task.classList.contains('active')){
-                    task.classList.add('active');
+            console.log(task);
+                if(!task.parentElement.parentElement.classList.contains('active')){
+                    task.parentElement.parentElement.classList.add('active')
                 } else {
-                    task.classList.remove('active')
+                    task.parentElement.parentElement.classList.remove('active')
                 }
             })
     })
@@ -59,24 +61,59 @@ function generateTasksList(selectedProject) {
     const tasksArray = selectedProject.getTasksArray();
     tasksArray.forEach((task) => {
         createTask(task);
+        // editTaskButton(tasksArray);
     })
+    editTaskButton(tasksArray);
     expandTask();
 }
 
 
 function createTask(task) {
+    console.log(task);
     const taskSection = document.getElementById('todo-container');
 
     const taskItem = document.createElement('div');
     taskItem.classList.add('task-item');
 
-
     const taskShort = document.createElement('div');
     taskShort.classList.add('task-short');
+
+    const taskDetails = document.createElement('span');
+    taskDetails.classList.add('task-details');
+
     const taskTitle = document.createElement('p');
     taskTitle.textContent = task.getTitle();
 
-    taskShort.appendChild(taskTitle);
+    const taskDueDate = document.createElement('p');
+    taskDueDate.textContent = task.getDueDate().toLocaleDateString('en-US', { dateStyle: 'medium'});
+
+    const taskPriority = document.createElement('span');
+    console.log(task.getPriority());
+    taskPriority.textContent = task.getPriority();
+
+    const taskButtons = document.createElement('span');
+    taskButtons.classList.add('tasks-buttons');
+
+
+    const completeTask = document.createElement('button');
+    completeTask.setAttribute('type', 'check');
+
+
+    const editTask = document.createElement('button');
+    editTask.classList.add('edit-task-button');
+    editTask.setAttribute('task-id', task.getId());
+    editTask.textContent = "edit";
+
+
+    taskDetails.appendChild(taskTitle);
+    taskDetails.appendChild(taskDueDate);
+    taskDetails.appendChild(taskPriority);
+
+    taskButtons.appendChild(completeTask);
+    taskButtons.appendChild(editTask);
+
+    taskShort.appendChild(taskDetails);
+    taskShort.appendChild(taskButtons);
 
     const taskExtendedContent = document.createElement('div');
     taskExtendedContent.classList.add('task-extended-content');
@@ -87,7 +124,9 @@ function createTask(task) {
     titleExtend.textContent = task.getTitle();
     titleDiv.appendChild(titleExtend);
 
+
     const descriptionDiv = document.createElement('div');
+    descriptionDiv.classList.add('description-extended')
     const descriptionExtend = document.createElement('p');
     descriptionExtend.textContent = task.getDescription();
     descriptionDiv.appendChild(descriptionExtend)

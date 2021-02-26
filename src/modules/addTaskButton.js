@@ -21,11 +21,12 @@ function addTaskButton() {
 
             const title = document.getElementById('task-title-input').value;
             const desc = document.getElementById('task-desc-input').value;
-            const dueDate = document.getElementById('task-due-date-input').value;
-            const priority = document.getElementById('task-priority-select');
+            const dueDate = new Date(document.getElementById('task-due-date-input').value);
+            const priority = document.getElementById('task-priority-select').value;
 
 
-            activeTasks.push(TaskFactory(title,desc,dueDate,priority, false));
+
+            activeTasks.push(TaskFactory.task(title,desc,dueDate,priority, false));
 
             projectsRestored[activeIndex].setTasksArray(activeTasks);
 
