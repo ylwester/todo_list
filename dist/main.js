@@ -810,7 +810,7 @@ function pageLoad () {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./src/index.js");
+/******/ 	__webpack_require__("index.js");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
