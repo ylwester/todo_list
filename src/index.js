@@ -1,4 +1,5 @@
-import'./styles/styles.css';
+import './styles/styles.css';
+
 import {pageLoad} from "./modules/pageload";
 
 import '@fortawesome/fontawesome-free/js/fontawesome'

@@ -102,14 +102,14 @@ function createTask(task) {
     const editTask = document.createElement('button');
     editTask.classList.add('edit-task-button');
     editTask.setAttribute('task-id', task.getId());
-    editTask.textContent = "edit";
+    editTask.textContent = "Edit";
 
 
     taskDetails.appendChild(taskTitle);
     taskDetails.appendChild(taskDueDate);
     taskDetails.appendChild(taskPriority);
 
-    taskButtons.appendChild(completeTask);
+    // taskButtons.appendChild(completeTask);
     taskButtons.appendChild(editTask);
 
     taskShort.appendChild(taskDetails);
