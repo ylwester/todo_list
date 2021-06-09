@@ -1,6 +1,6 @@
-import './styles/styles.css';
+import './src/styles/styles.css';
 
-import {pageLoad} from "./modules/pageload";
+import {pageLoad} from "./src/modules/pageload";
 
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
